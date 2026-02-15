@@ -6,6 +6,7 @@ import PipelineCta from "../components/organisms/PipelineCta";
 import StatsBand from "../components/organisms/StatsBand";
 import TeamGrid from "../components/organisms/TeamGrid";
 import Pill from "../components/molecules/Pill";
+import PillButtonGroup from "../components/molecules/PillButtonGroup";
 import Container from "../components/atoms/Container";
 
 export type Section =
@@ -26,13 +27,8 @@ export default function HomeTemplate({ sections }: { sections: Section[] }) {
           case "heroEditorial":
             return <HeroEditorial key={i} {...section} />;
           case "pills":
-            return (
-              <Container key={i} className="pb-6 flex flex-wrap gap-2">
-                {section.items.map((t, j) => (
-                  <Pill key={j} label={t} />
-                ))}
-              </Container>
-            );
+            // Render the new pill button group as per the screenshot
+            return <PillButtonGroup key={i} />;
           // case 'centerBadge':
           //   return <CenterBadge key={i} {...section} />;
           // case 'understanding':
