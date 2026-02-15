@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import AnnouncementBar from '../design-system/organisms/AnnouncementBar';
-import Navbar from '../design-system/organisms/Navbar';
-import Footer from '../design-system/organisms/Footer';
+import AnnouncementBar from '../components/organisms/AnnouncementBar';
+import Navbar from '../components/organisms/Navbar';
+import Footer from '../components/organisms/Footer';
 
 export default function SiteLayout({ children }:{ children: ReactNode }) {
   return (

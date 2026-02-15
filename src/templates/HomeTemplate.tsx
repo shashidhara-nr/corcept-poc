@@ -1,40 +1,53 @@
-import HeroEditorial from '../design-system/organisms/HeroEditorial';
-import StoryCard from '../design-system/organisms/StoryCard';
-import CenterBadge from '../design-system/organisms/CenterBadge';
-import Understanding from '../design-system/organisms/Understanding';
-import PipelineCta from '../design-system/organisms/PipelineCta';
-import StatsBand from '../design-system/organisms/StatsBand';
-import TeamGrid from '../design-system/organisms/TeamGrid';
-import Pill from '../design-system/molecules/Pill';
-import Container from '../design-system/atoms/Container';
+import HeroEditorial from "../components/organisms/HeroEditorial";
+import StoryCard from "../components/organisms/StoryCard";
+import CenterBadge from "../components/organisms/CenterBadge";
+import Understanding from "../components/organisms/Understanding";
+import PipelineCta from "../components/organisms/PipelineCta";
+import StatsBand from "../components/organisms/StatsBand";
+import TeamGrid from "../components/organisms/TeamGrid";
+import Pill from "../components/molecules/Pill";
+import Container from "../components/atoms/Container";
 
 export type Section =
-  | ({ type: 'heroEditorial' } & React.ComponentProps<typeof HeroEditorial>)
-  | ({ type: 'pills' } & { items: string[] })
-  | ({ type: 'centerBadge' } & React.ComponentProps<typeof CenterBadge>)
-  | ({ type: 'understanding' } & React.ComponentProps<typeof Understanding>)
-  | ({ type: 'pipelineCta' } & React.ComponentProps<typeof PipelineCta>)
-  | ({ type: 'statsBand' } & { stats: { value: string; label: string }[] })
-  | ({ type: 'storyCard' } & React.ComponentProps<typeof StoryCard>)
-  | ({ type: 'teamGrid' } & React.ComponentProps<typeof TeamGrid>);
+  | ({ type: "heroEditorial" } & React.ComponentProps<typeof HeroEditorial>)
+  | ({ type: "pills" } & { items: string[] })
+  | ({ type: "centerBadge" } & React.ComponentProps<typeof CenterBadge>)
+  | ({ type: "understanding" } & React.ComponentProps<typeof Understanding>)
+  | ({ type: "pipelineCta" } & React.ComponentProps<typeof PipelineCta>)
+  | ({ type: "statsBand" } & { stats: { value: string; label: string }[] })
+  | ({ type: "storyCard" } & React.ComponentProps<typeof StoryCard>)
+  | ({ type: "teamGrid" } & React.ComponentProps<typeof TeamGrid>);
 
-export default function HomeTemplate({ sections }:{ sections: Section[] }) {
+export default function HomeTemplate({ sections }: { sections: Section[] }) {
   return (
     <div>
-      {sections.map((s, i) => {
-        if (s.type === 'heroEditorial') return <HeroEditorial key={i} {...s} />;
-        if (s.type === 'pills') return (
-          <Container key={i} className="pb-6 flex flex-wrap gap-2">
-            {s.items.map((t, j) => (<Pill key={j} label={t} />))}
-          </Container>
-        );
-        if (s.type === 'centerBadge') return <CenterBadge key={i} {...s} />;
-        if (s.type === 'understanding') return <Understanding key={i} {...s} />;
-        if (s.type === 'pipelineCta') return <PipelineCta key={i} {...s} />;
-        if (s.type === 'statsBand') return <StatsBand key={i} {...s} />;
-        if (s.type === 'storyCard') return <StoryCard key={i} {...s} />;
-        if (s.type === 'teamGrid') return <TeamGrid key={i} {...s} />;
-        return null;
+      {sections.map((section, i) => {
+        switch (section.type) {
+          case "heroEditorial":
+            return <HeroEditorial key={i} {...section} />;
+          case "pills":
+            return (
+              <Container key={i} className="pb-6 flex flex-wrap gap-2">
+                {section.items.map((t, j) => (
+                  <Pill key={j} label={t} />
+                ))}
+              </Container>
+            );
+          // case 'centerBadge':
+          //   return <CenterBadge key={i} {...section} />;
+          // case 'understanding':
+          //   return <Understanding key={i} {...section} />;
+          // case 'pipelineCta':
+          //   return <PipelineCta key={i} {...section} />;
+          // case 'statsBand':
+          //   return <StatsBand key={i} {...section} />;
+          // case 'storyCard':
+          //   return <StoryCard key={i} {...section} />;
+          // case 'teamGrid':
+          //   return <TeamGrid key={i} {...section} />;
+          default:
+            return null;
+        }
       })}
     </div>
   );

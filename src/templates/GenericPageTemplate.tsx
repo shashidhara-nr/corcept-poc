@@ -1,5 +1,5 @@
-import HeroEditorial from '../design-system/organisms/HeroEditorial';
-import StoryCard from '../design-system/organisms/StoryCard';
+import HeroEditorial from '../components/organisms/HeroEditorial';
+import StoryCard from '../components/organisms/StoryCard';
 
 export type Section =
   | ({ type: 'heroEditorial' } & React.ComponentProps<typeof HeroEditorial>)
