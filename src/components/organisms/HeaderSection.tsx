@@ -121,7 +121,7 @@ export default function HeaderSection({
                   playsInline
                   preload="auto"
                   className="headerSection__mediaVideo"
-                  title={media?.title || "Header video"}
+                  // title={media?.title || "Header video"}
                   style={{ maxWidth: "100%", maxHeight: "100%" }}
                 />
               ) : (
